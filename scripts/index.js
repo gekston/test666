@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function(){
   table.addEventListener("mouseover", function( event ) {
     console.log('cell ' + event.target.cellIndex);
   })
-  let rows = document.querySelectorAll(".container__table tr");
-  for(let x = 0, xLength = rows.length; x < xLength; x++) {
-    console.log('rowIndex= ' + rows[x].rowIndex);
+  var rows = document.querySelectorAll(".container__table tr");
+  for(let x = rows.length -1; x >= 0; x--) {
+    rows[x].addEventListener("mouseover", function( event ) {
+      console.log(this.rowIndex);
+    })
   }
 });
