@@ -1,18 +1,77 @@
+:root {
+  --btn-add-color: #f3a500;
+  --btn-add-hover: #f6c052;
+  --btn-rm-color: #b20000;
+  --btn-rm-hover: #ca4c49;
+}
 * {
   margin: 0;
   padding: 0;
 }
-table {
+.container__table {
   border: 1px solid #48aae6;
   margin-left: auto;
   margin-right: auto;
 }
-table tr {
-
-}
-table tr td {
+.container__table tr td {
   width: 50px;
   height: 50px;
   border: 2px solid white;
   background-color: #48aae6;
+}
+.btn__rm,
+.btn__add {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  display: block;
+}
+.btn__add:hover,
+.btn__rm:hover {
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+.btn__add,
+.btn__rm {
+  color: white;
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 37px;
+}
+.btn__rm {
+  background-color: var(--btn-rm-color);
+}
+.btn__add {
+  background-color: var(--btn-add-color);
+}
+.btn__add:hover {
+  animation: addHover 0.5s;
+  animation-fill-mode: forwards;
+}
+.btn__add-row {
+
+}
+.btn__add-col {
+
+}
+
+.rm__btn {
+  background-color: red;
+  color: white;
+}
+.rm__btn:hover {
+  cursor: pointer;
+}
+@keyframes addHover {
+  0% {
+    background-color: var(--btn-add-color);
+  }
+  100% {
+    background-color: var(--btn-add-hover);
+  }
 }
