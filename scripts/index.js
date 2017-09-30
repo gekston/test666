@@ -1,18 +1,21 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-  var rows, currentRow, currentRowIndex, cell;
+  var currentRow, currentRowIndex, cell;
   let table = document.querySelector(".container__table");
   let rmRow = document.querySelector(".btn__rm-row");
   let addRow = document.querySelector(".btn__add-row");
   let addCol = document.querySelector(".btn__add-col");
   let rmCol = document.querySelector(".btn__rm-col");
+  var rows = rows = document.querySelectorAll(".container__table tr");
 
   table.addEventListener("mouseover", function( event ) {
     rows = document.querySelectorAll(".container__table tr");
-    //console.log('cell ' + event.target.cellIndex);
     cell = event.target.cellIndex;
-    let cellPositionLeft = event.target.getBoundingClientRect().left;
+    let cellPositionLeft;
     let cellPositionBottom = table.getBoundingClientRect().bottom;
+    if(event.target.nodeName == "TD") {
+      cellPositionLeft = event.target.getBoundingClientRect().left;
+    }
     addCol.style.left = cellPositionLeft + "px";
     rmCol.style.left = cellPositionLeft + "px";
     rmCol.style.top = cellPositionBottom + 5 + "px";
@@ -34,9 +37,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
   document.addEventListener("click", function( event ){
     if(event.target.classList == "btn__add btn__add-row") {
+      rows = rows = document.querySelectorAll(".container__table tr");
       let lastRow = document.querySelector(".container__table tr:last-child");
       let rowLength = rows[0].cells.length;
-      //console.log(rows.length)
       table.insertRow(rows.length);
       setTimeout(function(){
         lastRow  = document.querySelector(".container__table tr:last-child");
@@ -52,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function(){
     } else if (event.target.classList == "btn__rm btn__rm-row") {
       table.deleteRow(currentRowIndex);
     } else if (event.target.classList == "btn__rm btn__rm-col") {
-      console.log('delete col ' + cell);
       for(let x = 0; x < rows.length; x++){
         rows[x].deleteCell(cell);
       }
