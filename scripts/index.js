@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function(){
   let addRow = document.querySelector(".btn__add-row");
   let addCol = document.querySelector(".btn__add-col");
   let rmCol = document.querySelector(".btn__rm-col");
-  
-
 
   table.addEventListener("mouseover", function( event ) {
     rows = document.querySelectorAll(".container__table tr");
@@ -39,16 +37,17 @@ document.addEventListener("DOMContentLoaded", function(){
       let rowLength = rows[0].cells.length;
       //console.log(rows.length)
       table.insertRow(rows.length);
-      console.log(currentRow);
       setTimeout(function(){
         lastRow  = document.querySelector(".container__table tr:last-child");
         for(let x = 0; x <= rowLength - 1; x++) {
           lastRow.insertCell(lastRow);
         }
-      }, 0.1)
-      //rows.insertCell(rows);
+      }, 0.01)
     } else if (event.target.classList == "btn__add btn__add-col") {
-
+      for(let x = 0; x < rows.length; x++) {
+        let cellsRow = rows[x].cells.length;
+        rows[x].insertCell(cellsRow)
+      }
     } else if (event.target.classList == "btn__rm btn__rm-row") {
       table.deleteRow(currentRowIndex);
     } else if (event.target.classList == "btn__rm btn__rm-col") {
