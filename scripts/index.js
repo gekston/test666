@@ -1,43 +1,56 @@
 document.addEventListener("DOMContentLoaded", function(){
 
+  var rows, currentRow, currentRowIndex;
   let table = document.querySelector(".container__table");
   let rmRow = document.querySelector(".btn__rm-row");
   let addRow = document.querySelector(".btn__add-row");
   let addCol = document.querySelector(".btn__add-col");
   let rmCol = document.querySelector(".btn__rm-col");
-  var currentRow;
+  
+
 
   table.addEventListener("mouseover", function( event ) {
-    console.log('cell ' + event.target.cellIndex);
+    rows = document.querySelectorAll(".container__table tr");
+    //console.log('cell ' + event.target.cellIndex);
     let cellPositionLeft = event.target.getBoundingClientRect().left;
     let cellPositionBottom = table.getBoundingClientRect().bottom;
     addCol.style.left = cellPositionLeft + "px";
     rmCol.style.left = cellPositionLeft + "px";
     rmCol.style.top = cellPositionBottom + 5 + "px";
+
+    for(let x = rows.length -1; x >= 0; x--) {
+      rows[x].addEventListener("mouseover", function( event ) {
+        //console.log('row ' + this.rowIndex);
+        currentRow = this;
+        currentRowIndex = currentRow.rowIndex;
+        let rowPositionTop = currentRow.getBoundingClientRect().top;
+        let rowPositionRight = currentRow.getBoundingClientRect().right;
+        //console.log(rowPostion);
+        addRow.style.top = rowPositionTop + "px";
+        addRow.style.left = rowPositionRight + 5 + "px";
+        rmRow.style.top = rowPositionTop + "px";
+      })
+    }
   })
 
-  var rows = document.querySelectorAll(".container__table tr");
-  for(let x = rows.length -1; x >= 0; x--) {
-    rows[x].addEventListener("mouseover", function( event ) {
-      console.log('row ' + this.rowIndex);
-       currentRow = this.rowIndex;
-      let rowPositionTop = this.getBoundingClientRect().top;
-      let rowPositionRight = this.getBoundingClientRect().right;
-      //console.log(rowPostion);
-      addRow.style.top = rowPositionTop + "px";
-      addRow.style.left = rowPositionRight + 5 + "px";
-      rmRow.style.top = rowPositionTop + "px";
-    })
-  }
   document.addEventListener("click", function( event ){
     if(event.target.classList == "btn__add btn__add-row") {
-
+      let lastRow = document.querySelector(".container__table tr:last-child");
+      let rowLength = rows[0].cells.length;
+      //console.log(rows.length)
+      table.insertRow(rows.length);
+      console.log(currentRow);
+      setTimeout(function(){
+        lastRow  = document.querySelector(".container__table tr:last-child");
+        for(let x = 0; x <= rowLength - 1; x++) {
+          lastRow.insertCell(lastRow);
+        }
+      }, 0.1)
+      //rows.insertCell(rows);
     } else if (event.target.classList == "btn__add btn__add-col") {
 
     } else if (event.target.classList == "btn__rm btn__rm-row") {
-      console.log("current row " + currentRow);
-      table.deleteRow(currentRow);
-      //.deleteRow()
+      table.deleteRow(currentRowIndex);
     } else if (event.target.classList == "btn__rm btn__rm-col") {
 
     }
