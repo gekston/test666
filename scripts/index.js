@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-  var rows, currentRow, currentRowIndex;
+  var rows, currentRow, currentRowIndex, cell;
   let table = document.querySelector(".container__table");
   let rmRow = document.querySelector(".btn__rm-row");
   let addRow = document.querySelector(".btn__add-row");
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
   table.addEventListener("mouseover", function( event ) {
     rows = document.querySelectorAll(".container__table tr");
     //console.log('cell ' + event.target.cellIndex);
+    cell = event.target.cellIndex;
     let cellPositionLeft = event.target.getBoundingClientRect().left;
     let cellPositionBottom = table.getBoundingClientRect().bottom;
     addCol.style.left = cellPositionLeft + "px";
@@ -46,12 +47,15 @@ document.addEventListener("DOMContentLoaded", function(){
     } else if (event.target.classList == "btn__add btn__add-col") {
       for(let x = 0; x < rows.length; x++) {
         let cellsRow = rows[x].cells.length;
-        rows[x].insertCell(cellsRow)
+        rows[x].insertCell(cellsRow);
       }
     } else if (event.target.classList == "btn__rm btn__rm-row") {
       table.deleteRow(currentRowIndex);
     } else if (event.target.classList == "btn__rm btn__rm-col") {
-
+      console.log('delete col ' + cell);
+      for(let x = 0; x < rows.length; x++){
+        rows[x].deleteCell(cell);
+      }
     }
   })
 });
