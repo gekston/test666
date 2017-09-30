@@ -43,18 +43,26 @@
   font-size: 37px;
 }
 .btn__rm {
-  background-color: var(--btn-rm-color);
+  animation: rmBtnLostHover 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+.btn__rm:hover {
+  animation: rmBtnHover 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 1;
 }
 .btn__add {
-  background-color: var(--btn-add-color);
+  animation: addBtnlostHover 0.5s;
+  animation-fill-mode: forwards;
 }
 .btn__add:hover {
-  animation: addHover 0.5s;
+  animation: addBtnHover 0.5s;
   animation-fill-mode: forwards;
 }
 .btn__add-row {
   position: absolute;
-  top: 123px;
+  top: 117px;
   left: 287px;
 }
 .btn__add-col {
@@ -62,24 +70,39 @@
   top: 0;
   left: 57px;
 }
-.btn__rm-row {
-  position: absolute;
-}
+.btn__rm-row,
 .btn__rm-col {
   position: absolute;
 }
-.rm__btn {
-  background-color: red;
-  color: white;
-}
-.rm__btn:hover {
-  cursor: pointer;
-}
-@keyframes addHover {
-  0% {
+@keyframes addBtnHover {
+  from {
     background-color: var(--btn-add-color);
   }
-  100% {
+  to {
     background-color: var(--btn-add-hover);
+  }
+}
+@keyframes addBtnlostHover {
+  from {
+    background-color: var(--btn-add-hover);
+  }
+  to {
+    background-color: var(--btn-add-color);
+  }
+}
+@keyframes rmBtnHover {
+  from {
+    background-color: var(--btn-rm-color);
+  }
+  to {
+    background-color: var(--btn-rm-hover);
+  }
+}
+@keyframes rmBtnLostHover {
+  from {
+    background-color: var(--btn-rm-hover);
+  }
+  to {
+    background-color: var(--btn-rm-color);
   }
 }
