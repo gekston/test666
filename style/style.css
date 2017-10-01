@@ -62,17 +62,21 @@
 }
 .btn__add-row {
   position: absolute;
-  top: 117px;
+  top: 60px;
   left: 287px;
 }
 .btn__add-col {
   position: absolute;
-  top: 0;
+  top: 288px;
   left: 57px;
 }
 .btn__rm-row,
 .btn__rm-col {
   position: absolute;
+  top: 0;
+}
+.visible {
+  opacity: 1;
 }
 @keyframes addBtnHover {
   from {

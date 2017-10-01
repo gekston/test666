@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function(){
   var currentRow, currentRowIndex, cell;
   let table = document.querySelector(".container__table");
   let rmRow = document.querySelector(".btn__rm-row");
+  let rmCol = document.querySelector(".btn__rm-col");
   let addRow = document.querySelector(".btn__add-row");
   let addCol = document.querySelector(".btn__add-col");
-  let rmCol = document.querySelector(".btn__rm-col");
   var rows = rows = document.querySelectorAll(".container__table tr");
 
   table.addEventListener("mouseover", function( event ) {
@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function(){
     if(event.target.nodeName == "TD") {
       cellPositionLeft = event.target.getBoundingClientRect().left;
     }
-    addCol.style.left = cellPositionLeft + "px";
     rmCol.style.left = cellPositionLeft + "px";
-    rmCol.style.top = cellPositionBottom + 5 + "px";
+    addCol.style.left = cellPositionLeft + "px";
+    addCol.style.top = cellPositionBottom + 5 + "px";
 
     for(let x = rows.length -1; x >= 0; x--) {
       rows[x].addEventListener("mouseover", function( event ) {
@@ -33,11 +33,18 @@ document.addEventListener("DOMContentLoaded", function(){
         rmRow.style.top = rowPositionTop + "px";
       })
     }
+    rmCol.classList.add("visible");
+    rmRow.classList.add("visible");
+  })
+
+  table.addEventListener("mouseout", function( event ) {
+    rmCol.classList.remove("visible");
+    rmRow.classList.remove("visible");
   })
 
   document.addEventListener("click", function( event ){
     if(event.target.classList == "btn__add btn__add-row") {
-      rows = rows = document.querySelectorAll(".container__table tr");
+      rows = document.querySelectorAll(".container__table tr");
       let lastRow = document.querySelector(".container__table tr:last-child");
       let rowLength = rows[0].cells.length;
       table.insertRow(rows.length);
@@ -61,5 +68,3 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   })
 });
-//.deleteCell(0);
-//.insertRow(0); .insertCell(0);
