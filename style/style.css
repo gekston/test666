@@ -17,6 +17,9 @@
   align-items: flex-start;
   padding: 55px 0 0 55px;
 }
+.visible {
+  display: block !important;
+}
 .container__table {
   border: 1px solid var(--table-color);
   margin: 0 3px 3px 0px;
@@ -26,13 +29,6 @@
   width: 50px;
   height: 50px;
   background-color: var(--table-color);
-}
-.btn__rm,
-.btn__add {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  display: block;
 }
 .btn__add:hover,
 .btn__rm:hover {
@@ -55,12 +51,13 @@
 .btn__rm {
   animation: rmBtnLostHover 0.5s;
   animation-fill-mode: forwards;
-  opacity: 0;
+  margin: 3px;
+  display: none;
 }
 .btn__rm:hover {
   animation: rmBtnHover 0.5s;
   animation-fill-mode: forwards;
-  opacity: 1;
+  display: block;
 }
 .btn__add {
   animation: addBtnlostHover 0.5s;
@@ -81,9 +78,7 @@
 .btn__add-col {
   margin: 0 0 0 58px;
 }
-.visible {
-  opacity: 1;
-}
+
 @keyframes addBtnHover {
   from {
     background-color: var(--btn-add-color);
