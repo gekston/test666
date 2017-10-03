@@ -4,7 +4,7 @@
   --btn-rm-color: #b20000;
   --btn-rm-hover: #ca4c49;
   --table-color: #48aae6;
---white: #ffffff;
+  --white: #ffffff;
 }
 * {
   margin: 0;
@@ -13,11 +13,12 @@
 .container__table {
   border: 1px solid var(--table-color);
   margin: 55px;
+  border-spacing: 2px;
 }
 .container__table tr td {
   width: 50px;
   height: 50px;
-  border: 2px solid var(--white);
+  /*border: 1px solid var(--white);*/
   background-color: var(--table-color);
 }
 .btn__rm,
