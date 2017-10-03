@@ -18,7 +18,6 @@
 .container__table tr td {
   width: 50px;
   height: 50px;
-  /*border: 1px solid var(--white);*/
   background-color: var(--table-color);
 }
 .btn__rm,
