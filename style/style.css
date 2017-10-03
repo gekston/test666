@@ -70,16 +70,6 @@
   animation: addBtnHover 0.5s;
   animation-fill-mode: forwards;
 }
-/*.btn__add-row {
-  position: absolute;
-  top: 60px;
-  left: 287px;
-}*/
-/*.btn__add-col {
-  position: absolute;
-  top: 288px;
-  left: 57px;
-}*/
 .btn__rm-row,
 .btn__rm-col {
   position: absolute;
