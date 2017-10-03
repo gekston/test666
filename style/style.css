@@ -10,9 +10,16 @@
   margin: 0;
   padding: 0;
 }
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 55px 0 0 55px;
+}
 .container__table {
   border: 1px solid var(--table-color);
-  margin: 55px;
+  margin: 0 3px 3px 0px;
   border-spacing: 2px;
 }
 .container__table tr td {
@@ -62,20 +69,23 @@
   animation: addBtnHover 0.5s;
   animation-fill-mode: forwards;
 }
-.btn__add-row {
+/*.btn__add-row {
   position: absolute;
   top: 60px;
   left: 287px;
-}
-.btn__add-col {
+}*/
+/*.btn__add-col {
   position: absolute;
   top: 288px;
   left: 57px;
-}
+}*/
 .btn__rm-row,
 .btn__rm-col {
   position: absolute;
   top: 0;
+}
+.btn__add-col {
+  margin: 0 0 0 55px;
 }
 .visible {
   opacity: 1;

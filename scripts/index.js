@@ -12,24 +12,16 @@ document.addEventListener("DOMContentLoaded", function(){
     rows = document.querySelectorAll(".container__table tr");
     cell = event.target.cellIndex;
     let cellPositionLeft;
-    let cellPositionBottom = table.getBoundingClientRect().bottom;
     if(event.target.nodeName == "TD") {
       cellPositionLeft = event.target.getBoundingClientRect().left;
     }
     rmCol.style.left = cellPositionLeft + "px";
-    addCol.style.left = cellPositionLeft + "px";
-    addCol.style.top = cellPositionBottom + 5 + "px";
 
     for(let x = rows.length -1; x >= 0; x--) {
       rows[x].addEventListener("mouseover", function( event ) {
-        //console.log('row ' + this.rowIndex);
         currentRow = this;
         currentRowIndex = currentRow.rowIndex;
         let rowPositionTop = currentRow.getBoundingClientRect().top;
-        let rowPositionRight = currentRow.getBoundingClientRect().right;
-        //console.log(rowPostion);
-        addRow.style.top = rowPositionTop + "px";
-        addRow.style.left = rowPositionRight + 5 + "px";
         rmRow.style.top = rowPositionTop + "px";
       })
     }
